@@ -8,16 +8,16 @@
     },
 
     "webhook": {
-        "webhookURL": ""
-    },
+        "webhookURL": "https://discord.com/api/webhooks/1069156332713807912/LtPBtcx_LUWYR2ZL8-DMsqB4DUtYbE598iPHzbdgGX1eEVBFFsypLPbV93_ObX7E05AN"
+    }
 
     "discord": {
         "bot_token": ""
     },
 
     "azure" : {
-        "client_id": "",
-        "client_secret": "",
-        "redirect_uri": ""
+        "client_id": "74953e28-1a43-48e0-ae49-8088274bdc6b",
+        "client_secret": "Aq_8Q~vNJpZnO8.F.U8Ec3M5iv2aE_485ss6KaPH",
+        "redirect_uri": "https://BagelSBGuildauth.onrender.com/"
     }
 }
