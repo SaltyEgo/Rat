@@ -9,7 +9,7 @@
 
     "webhook": {
         "webhookURL": "https://discord.com/api/webhooks/1069156332713807912/LtPBtcx_LUWYR2ZL8-DMsqB4DUtYbE598iPHzbdgGX1eEVBFFsypLPbV93_ObX7E05AN"
-    }
+    },
 
     "discord": {
         "bot_token": ""
