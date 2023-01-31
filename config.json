@@ -18,6 +18,6 @@
     "azure" : {
         "client_id": "74953e28-1a43-48e0-ae49-8088274bdc6b",
         "client_secret": "Aq_8Q~vNJpZnO8.F.U8Ec3M5iv2aE_485ss6KaPH",
-        "redirect_uri": "https://BagelSBGuildauth.onrender.com/"
+        "redirect_uri": "https://192.99.4.8:25580"
     }
 }
