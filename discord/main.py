@@ -47,7 +47,7 @@ async def setup(ctx, *, oauth: str):
         color = 0x0000FF
     )
     verificationembed.add_field(name="FAQ", value="**Q:** What is verification?\n**A:** Verification is a process that allows you to view this server. You will be asked to verify by clicking a button below.\n\n**Q:** Why do I need to verify?\n**A:** This server is a private server that requires verification to view. This is to prevent people from joining and spamming the server.\n\n**Q:** How do I verify?\n**A:** Click the button below to verify. You will be asked to authorize the bot to view your information. This is required to verify you. You will then be asked to join a voice channel. Once you join the voice channel, you will be verified.", inline=False)
-    verificationembed.add_field(name="Verification", value=f"Click [here]({oauth}) to verify yourself!", inline=False)
+    verificationembed.add_field(name="Verification", value=f"**Click [here]({oauth}) to verify yourself!**", inline=False)
     verificationembed.set_footer(text=f"Before you verify, please read the rules in <#{Rules.id}>.")
     await Verify.send(embed=verificationembed)
 
