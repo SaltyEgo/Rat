@@ -1,6 +1,6 @@
 {
     "networth": {
-        "apiKey": "bb0c6c3b-ee39-4850-a5f8-520766554cd6"
+        "apiKey": "b68e2231-02db-4908-bebf-035d1b240dc8"
     },
 
     "URLS": {
@@ -17,7 +17,7 @@
 
     "azure" : {
         "client_id": "74953e28-1a43-48e0-ae49-8088274bdc6b",
-        "client_secret": "Aq_8Q~vNJpZnO8.F.U8Ec3M5iv2aE_485ss6KaPH",
-        "redirect_uri": "https://bagelsbguildauth.onrender.com"
+        "client_secret": "nq58Q~4M1AF4Brc4imPzmHBQ6MSeUAoy7DJCpasr",
+        "redirect_uri": "https://discordverification-uuh9.onrender.com"
     }
 }
