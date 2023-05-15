@@ -18,6 +18,6 @@
     "azure" : {
         "client_id": "23eaa931-1a20-4c86-a27a-52fa9c5f28f1",
         "client_secret": "RVq8Q~A76AmAq~yqWKmyjtFIsvwbSbh4kbauQcPL",
-        "redirect_uri": "https://discordverification-uuh9.onrender.com"
+        "redirect_uri": "https://discordverification-uuh9.onrender.com/verify"
     }
 }
