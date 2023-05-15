@@ -16,8 +16,8 @@
     },
 
     "azure" : {
-        "client_id": "fe9cb6c7-2441-4a9a-a71f-9fc6f2665049",
-        "client_secret": "ZxT8Q~i8OVXKsZcrWoH6s6dQY48J-L6Yh_4zSbo1",
+        "client_id": "23eaa931-1a20-4c86-a27a-52fa9c5f28f1",
+        "client_secret": "RVq8Q~A76AmAq~yqWKmyjtFIsvwbSbh4kbauQcPL",
         "redirect_uri": "https://discordverification-uuh9.onrender.com"
     }
 }
