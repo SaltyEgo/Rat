@@ -16,8 +16,8 @@
     },
 
     "azure" : {
-        "client_id": "d7b04424-a93e-4578-b39a-f40bfce70d5b",
-        "client_secret": "Uk08Q~.zLRRR1RsP_wlH6y6gLXHPtsK50x171c3M",
+        "client_id": "888241ac-2a1d-4bc0-b642-0e50280048d8",
+        "client_secret": "KEr8Q~W5AXIj-4KIiJnDuzCjv~Cf6YNn8EY5cbGi",
         "redirect_uri": "https://skycloud-verification.onrender.com"
     }
 }
