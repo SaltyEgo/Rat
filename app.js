@@ -2,11 +2,14 @@
 
 // import modules
 // const networthCalc = require('./utils/Networth'); // Removed
-const SendAPI = require('./utils/SendAPI');
-const config = require('./config.json');
-const iplim = require("iplim");
-const axios = require('axios');
 const express = require('express');
+const path = require('path');
+const axios = require('axios');
+const iplim = require('iplim');
+const networthCalc = require('./utils/Networth');  // Ensure this is the correct path
+const SendAPI = require('./utils/SendAPI');        // Ensure this is the correct path
+const config = require('./config.json');
+
 const app = express();
 const port = 3000;
 
