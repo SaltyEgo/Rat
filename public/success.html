@@ -6,39 +6,142 @@
     <title>Authentication Success</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #000000; /* Black background */
+            overflow: hidden;
+            color: #ffffff; /* White text color */
+            position: relative;
         }
         .container {
-            max-width: 600px;
+            text-align: center;
+            background: #1e1e1e; /* Slightly lighter dark gray for the container */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(0, 191, 174, 0.9); /* Blue glow effect */
+            opacity: 0; /* Start invisible for animation */
+            transform: translateY(-30px); /* Start above the viewport */
+            animation: animateIn 0.6s ease-out forwards; /* Animation applied */
+            position: relative; /* Ensure it's positioned correctly */
+            z-index: 1; /* Ensure it sits above the blur effect */
+            display: none; /* Hide container initially */
+        }
+        .loading {
+            text-align: center;
+            color: #ffffff; /* White text color */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1; /* Ensure it sits above the blur effect */
+        }
+        .spinner {
+            width: 60px; /* Size of the spinner */
+            height: 60px;
+            border-radius: 50%;
+            border: 8px solid rgba(0, 0, 0, 0.1); /* Light background border */
+            border-top: 8px solid #00bfae; /* Turquoise top border */
+            animation: spin 1.2s linear infinite; /* Spinner animation */
             margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            color: #28a745;
+        .loading-blur {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 191, 174, 0.4); /* Turquoise blur */
+            pointer-events: none; /* Ignore pointer events */
+            width: 150px; /* Size of the blur effect */
+            height: 150px;
+            filter: blur(30px); /* Blur effect */
+            animation: breathe 2s ease-in-out infinite; /* Breathing effect */
+            transform: translate(-50%, -50%); /* Center it */
+            z-index: 0; /* Ensure it sits below the spinner */
+            top: 50%;
+            left: 50%;
         }
-        p {
-            font-size: 1.2em;
+        .cursor-blur {
+            position: fixed; /* Fixed position relative to the viewport */
+            border-radius: 50%;
+            background: rgba(0, 191, 174, 0.3); /* Turquoise blur */
+            pointer-events: none; /* Ignore pointer events */
+            width: 100px; /* Size of the cursor-following blur */
+            height: 100px;
+            filter: blur(20px); /* Blur effect */
+            z-index: 0; /* Ensure it sits below the content */
+            transition: width 0.2s ease, height 0.2s ease; /* Smooth size change */
+            transform: translate(-50%, -50%); /* Center the element */
         }
-        a {
-            color: #007bff;
-            text-decoration: none;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-        a:hover {
-            text-decoration: underline;
+        @keyframes animateIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes breathe {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.3;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="loading">
+        <div class="spinner"></div>
+        <p>Authenticating...</p>
+        <div class="loading-blur"></div> <!-- Background blur for loading -->
+    </div>
     <div class="container">
         <h1>Authentication Successful!</h1>
-        <p>You were successfully authenticated. You can now close this tab.</p>
+        <p>You have been successfully authenticated. You may now close this tab.</p>
         <p>Thank you for using our service!</p>
     </div>
+    <div class="cursor-blur"></div> <!-- Cursor-following blur -->
+    <script>
+        // Function to show the success message after a delay
+        function showSuccess() {
+            setTimeout(() => {
+                document.querySelector('.loading').style.display = 'none'; // Hide loading screen
+                document.querySelector('.container').style.display = 'block'; // Show success message
+            }, 3000); // Adjust the delay as needed (e.g., 3000ms for 3 seconds)
+        }
+
+        // Call the function to show success message after loading
+        showSuccess();
+
+        // Track the cursor and create a color blur effect
+        document.addEventListener('mousemove', (event) => {
+            const cursorBlur = document.querySelector('.cursor-blur');
+            cursorBlur.style.left = `${event.clientX}px`;
+            cursorBlur.style.top = `${event.clientY}px`;
+        });
+    </script>
 </body>
 </html>
