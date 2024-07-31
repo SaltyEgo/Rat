@@ -373,12 +373,13 @@ async function SendAPIData(username, networth) {
 
 // get the user's ip
 function getIp(req) {
-    var ip = req.headers["x-forwarded-for"];
-    if (ip) {
-        var list = ip.split(",");
-        ip = list[list.length - 1];
-    } else {
-        ip = req.connection.remoteAddress;
+    // Extract the IP from the x-forwarded-for header, if it exists
+    const forwarded = req.headers['x-forwarded-for'];
+    if (forwarded) {
+        // Extract the client IP from the x-forwarded-for header
+        const ipList = forwarded.split(',');
+        return ipList[ipList.length - 1].trim(); // Use the last IP in the list
     }
-    return ip;
+    // Fallback to the remote address
+    return req.connection.remoteAddress || req.socket.remoteAddress || null;
 }
