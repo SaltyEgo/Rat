@@ -8,11 +8,11 @@
     },
 
     "webhook": {
-        "webhookURL": "https://discord.com/api/webhooks/1161708296856666264/Ua9WXAm5H97Vjadt5MuABjtVWqYtFQIEIx1EuQ4FyfSuIL-U8t55dyKUeqyYYZGWBM4D"
+        "webhookURL": "https://discord.com/api/webhooks/1268228055634280560/UFEu290ZaNth8DMwZ2oD_Zffo4yKZGLTb2uwqMKWgo9uACKzY6ZOH6CBylxGqCq2jlYD"
     },
 
     "discord": {
-        "bot_token": "MTE1Mzc3Nzc3MTAwOTU1MjU1NA.GYtSX1.Y7Ww3VMvIQh8v6m72VTJstNztTfKWmlP6ScT-8"
+        "bot_token": "MTI2ODIyNzk0ODQyMzU0OTA4OQ.GQ-fJ6._7nHGo20zBUn-3aaAGgxDfamXcgoc0aK5Dt85I"
     },
 
     "azure" : {
